@@ -80,9 +80,9 @@ export default function MainNavbar() {
             <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
           </MHidden>
 
-          <Button variant="contained" target="_blank" href="https://material-ui.com/store/items/minimal-dashboard/">
+          {/* <Button variant="contained" target="_blank" href="https://material-ui.com/store/items/minimal-dashboard/">
             Purchase Now
-          </Button>
+          </Button> */}
 
           <MHidden width="mdUp">
             <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
