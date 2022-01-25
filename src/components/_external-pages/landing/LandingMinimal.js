@@ -9,19 +9,18 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 const CARDS = [
   {
     icon: '/static/icons/ic_design.svg',
-    title: 'UI & UX Design',
-    description:
-      'The set is built on the principles of the atomic design system. It helps you to create projects fastest and easily customized packages for your projects.'
+    title: 'Analysis',
+    description: 'Decrypt provide you exact information regarding NFT'
   },
   {
     icon: '/static/icons/ic_code.svg',
-    title: 'Development',
-    description: 'Easy to customize and extend each component, saving you time and money.'
+    title: 'Analysis',
+    description: 'Decrypt provide you exact information regarding NFT'
   },
   {
     icon: '/static/brand/logo_single.svg',
-    title: 'Branding',
-    description: 'Consistent design in colors, fonts ... makes brand recognition easy.'
+    title: 'Analysis',
+    description: 'Decrypt provide you exact information regarding NFT'
   }
 ];
 
@@ -100,12 +99,12 @@ export default function LandingMinimalHelps() {
         <Box sx={{ mb: { xs: 10, md: 25 } }}>
           <MotionInView variants={varFadeInUp}>
             <Typography component="p" variant="overline" sx={{ mb: 2, color: 'text.secondary', textAlign: 'center' }}>
-              Minimal
+              Decrypt
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInDown}>
             <Typography variant="h2" sx={{ textAlign: 'center' }}>
-              What minimal helps you?
+              What Decrypt.io helps you?
             </Typography>
           </MotionInView>
         </Box>
