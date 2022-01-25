@@ -10,6 +10,11 @@ import {
   CardActionArea,
   Typography,
   Modal,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Dialog,
   Button
 } from '@material-ui/core';
 import { useEffect, useState } from 'react';
@@ -30,6 +35,7 @@ export default function ConnectWalletButton() {
   const [walletAddress, setWalletAddress] = useState('');
   const [status, setStatus] = useState('');
   const [modalopen, setModalOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   // useEffect(async () => {
   //   const walletResponse = await connectWallet();
   //   if (walletResponse.success === true) {
@@ -41,8 +47,9 @@ export default function ConnectWalletButton() {
   //   setWalletAddress(walletResponse.address);
   // }, []);
 
-  const handleModalOpen = () => setModalOpen(true);
-  const handleModalClose = () => setModalOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
   function addWalletListener() {
     if (window.ethereum) {
       window.ethereum.on('accountsChanged', (accounts) => {
@@ -75,24 +82,28 @@ export default function ConnectWalletButton() {
       addWalletListener();
     } else {
       setStatus(walletResponse.status);
-      // setModalOpen(true);
+      setOpen(true);
     }
     setWalletAddress(walletResponse.address);
   }
   return (
     <>
-      <Modal
-        open={modalopen}
-        onClose={handleModalClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {status}
-          </Typography>
-        </Box>
-      </Modal>
+        <DialogTitle id="alert-dialog-title">You don't have Metamask in your Browser.</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">{status}</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} autoFocus>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Button variant="contained" onClick={handleOnConnectWallet}>
         {walletAddress.length > 0
           ? `${String(walletAddress).substring(0, 6)}...${String(walletAddress).substring(38)}`

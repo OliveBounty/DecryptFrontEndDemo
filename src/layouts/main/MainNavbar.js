@@ -72,7 +72,7 @@ export default function MainNavbar() {
             <Logo />
           </RouterLink>
           <Label color="info" sx={{ ml: 1 }}>
-            v2.4.0
+            Decrypt v1.0
           </Label>
           <Box sx={{ flexGrow: 1 }} />
 
