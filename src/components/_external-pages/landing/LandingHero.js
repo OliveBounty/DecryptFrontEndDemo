@@ -78,7 +78,7 @@ export default function LandingHero() {
             <motion.div variants={varFadeInRight}>
               <Typography variant="h1" sx={{ color: 'common.white' }}>
                 Enjoy Analysis <br />
-                system with <br /> with
+                system with <br />
                 <Typography component="span" variant="h1" sx={{ color: 'primary.main' }}>
                   &nbsp;Decrypt.io
                 </Typography>

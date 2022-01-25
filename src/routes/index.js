@@ -3,6 +3,7 @@ import { Navigate, useRoutes, useLocation } from 'react-router-dom';
 // layouts
 import MainLayout from '../layouts/main';
 import DashboardLayout from '../layouts/dashboard';
+import ContainerLayout from '../layouts/container';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
 // guards
 import GuestGuard from '../guards/GuestGuard';
@@ -220,7 +221,12 @@ export default function Router() {
         }
       ]
     },
-    { path: '*', element: <Navigate to="/404" replace /> }
+    { path: '*', element: <Navigate to="/404" replace /> },
+    // Container Routes
+    {
+      path: 'container',
+      element: <ContainerLayout />
+    }
   ]);
 }
 
