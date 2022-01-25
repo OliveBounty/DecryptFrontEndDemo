@@ -6,6 +6,7 @@ import { styled, useTheme } from '@material-ui/core/styles';
 import useCollapseDrawer from '../../hooks/useCollapseDrawer';
 import ContainerNavbar from './ContainerNavbar';
 import ContainerSidebar from './ContainerSidebar';
+import DraggableTable from './DraggableTable';
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -51,7 +52,8 @@ export default function ContainerLayout() {
           })
         }}
       >
-        this is ContainerLayout
+        {/* this is ContainerLayout */}
+        <DraggableTable />
       </MainStyle>
     </RootStyle>
   );
