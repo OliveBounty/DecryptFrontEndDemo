@@ -77,22 +77,19 @@ export default function LandingHero() {
           <ContentStyle>
             <motion.div variants={varFadeInRight}>
               <Typography variant="h1" sx={{ color: 'common.white' }}>
-                Start a <br />
-                new project <br /> with
+                Enjoy Analysis <br />
+                system with <br /> with
                 <Typography component="span" variant="h1" sx={{ color: 'primary.main' }}>
-                  &nbsp;Minimal
+                  &nbsp;Decrypt.io
                 </Typography>
               </Typography>
             </motion.div>
 
             <motion.div variants={varFadeInRight}>
-              <Typography sx={{ color: 'common.white' }}>
-                The starting point for your next project based on easy-to-customize Material-UI © helps you build apps
-                faster and better.
-              </Typography>
+              <Typography sx={{ color: 'common.white' }}>You can see all the information through Decrypt</Typography>
             </motion.div>
 
-            <Stack
+            {/* <Stack
               component={motion.div}
               variants={varFadeInRight}
               direction="row"
@@ -110,9 +107,9 @@ export default function LandingHero() {
               >
                 Preview in Sketch Cloud
               </Link>
-            </Stack>
+            </Stack> */}
 
-            <motion.div variants={varFadeInRight}>
+            {/* <motion.div variants={varFadeInRight}>
               <Button
                 size="large"
                 variant="contained"
@@ -122,16 +119,16 @@ export default function LandingHero() {
               >
                 Live Preview
               </Button>
-            </motion.div>
+            </motion.div> */}
 
-            <Stack direction="row" spacing={1.5} justifyContent={{ xs: 'center', md: 'flex-start' }}>
+            {/* <Stack direction="row" spacing={1.5} justifyContent={{ xs: 'center', md: 'flex-start' }}>
               <motion.img variants={varFadeInRight} src="/static/home/ic_sketch.svg" />
               <motion.img variants={varFadeInRight} src="/static/home/ic_figma.svg" />
               <motion.img variants={varFadeInRight} src="/static/home/ic_material.svg" />
               <motion.img variants={varFadeInRight} src="/static/home/ic_react.svg" />
               <motion.img variants={varFadeInRight} src="/static/home/ic_js.svg" />
               <motion.img variants={varFadeInRight} src="/static/home/ic_ts.svg" />
-            </Stack>
+            </Stack> */}
           </ContentStyle>
         </Container>
       </RootStyle>

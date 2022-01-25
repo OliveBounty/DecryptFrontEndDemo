@@ -8,7 +8,7 @@ import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
 import { styled } from '@material-ui/core/styles';
 import { Box, Link, Grid, List, Stack, Popover, ListItem, ListSubheader, CardActionArea } from '@material-ui/core';
-
+import ConnectWalletButton from '../../components/ConnectWalletButton';
 // ----------------------------------------------------------------------
 
 const LinkStyle = styled(Link)(({ theme }) => ({
@@ -183,6 +183,9 @@ function MenuDesktopItem({ item, pathname, isHome, isOpen, isOffset, onOpen, onC
     );
   }
 
+  if (title === 'Connect Wallet') {
+    return <ConnectWalletButton />;
+  }
   if (title === 'Documentation') {
     return (
       <LinkStyle

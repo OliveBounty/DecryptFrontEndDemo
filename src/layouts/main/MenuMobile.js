@@ -15,6 +15,7 @@ import Scrollbar from '../../components/Scrollbar';
 import { MIconButton } from '../../components/@material-extend';
 //
 import menuConfig from './MenuConfig';
+import ConnectWalletButton from '../../components/ConnectWalletButton';
 
 // ----------------------------------------------------------------------
 
@@ -106,6 +107,9 @@ function MenuMobileItem({ item, isOpen, isActive, onOpen }) {
         </Collapse>
       </div>
     );
+  }
+  if (title === 'Connect Wallet') {
+    return <ConnectWalletButton />;
   }
 
   if (title === 'Documentation') {

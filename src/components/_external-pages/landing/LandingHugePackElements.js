@@ -88,14 +88,14 @@ export default function LandingHugePackElements() {
             <ContentStyle>
               <MotionInView variants={varFadeInUp}>
                 <Typography component="p" variant="overline" sx={{ mb: 2, color: 'text.secondary' }}>
-                  Interface Starter Kit
+                  Interface Decrypt.io
                 </Typography>
               </MotionInView>
 
               <MotionInView variants={varFadeInUp}>
                 <Typography variant="h2" sx={{ mb: 3 }}>
-                  Huge pack <br />
-                  of elements
+                  Decrypt <br />
+                  Dashboard
                 </Typography>
               </MotionInView>
 
@@ -106,11 +106,11 @@ export default function LandingHugePackElements() {
                     color: isLight ? 'text.secondary' : 'common.white'
                   }}
                 >
-                  We collected most popular elements. Menu, sliders, buttons, inputs etc. are all here. Just dive in!
+                  We collected most popular NFTs on Opensea and display whole datas on dashboard
                 </Typography>
               </MotionInView>
 
-              <MotionInView variants={varFadeInUp}>
+              {/* <MotionInView variants={varFadeInUp}>
                 <Button
                   size="large"
                   color="inherit"
@@ -120,7 +120,7 @@ export default function LandingHugePackElements() {
                 >
                   View All Components
                 </Button>
-              </MotionInView>
+              </MotionInView> */}
             </ContentStyle>
           </Grid>
 
