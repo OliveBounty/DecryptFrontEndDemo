@@ -226,7 +226,10 @@ export default function Router() {
     {
       path: 'container',
       element: <ContainerLayout />,
-      children: [{ path: 'nftparadise', element: <DraggableTable /> }]
+      children: [
+        { path: '/', element: <Navigate to="/container/nftparadise" replace /> },
+        { path: 'nftparadise', element: <DraggableTable /> }
+      ]
     }
   ]);
 }
