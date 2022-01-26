@@ -45,7 +45,7 @@ export default function RadioButtons() {
   };
 
   return (
-    <RootStyle title="Components: Checkboxes | Minimal-UI">
+    <RootStyle title="Components: Checkboxes | Decrypt">
       <Box
         sx={{
           pt: 6,

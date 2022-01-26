@@ -24,7 +24,7 @@ const RootStyle = styled(Page)(({ theme }) => ({
 
 export default function StepperComponent() {
   return (
-    <RootStyle title="Components: StepperView | Minimal-UI">
+    <RootStyle title="Components: StepperView | Decrypt">
       <Box
         sx={{
           pt: 6,

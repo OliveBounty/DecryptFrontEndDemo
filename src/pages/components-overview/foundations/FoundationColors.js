@@ -105,7 +105,7 @@ export default function FoundationColors() {
   };
 
   return (
-    <RootStyle title="Foundations: Color | Minimal-UI">
+    <RootStyle title="Foundations: Color | Decrypt">
       <Box
         sx={{
           pt: 6,

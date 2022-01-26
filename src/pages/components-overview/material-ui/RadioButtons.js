@@ -35,7 +35,7 @@ export default function RadioButtons() {
   };
 
   return (
-    <RootStyle title="Components: Radio Buttons | Minimal-UI">
+    <RootStyle title="Components: Radio Buttons | Decrypt">
       <Box
         sx={{
           pt: 6,
