@@ -34,7 +34,8 @@ export const PATH_PAGE = {
 export const PATH_CONTAINER = {
   root: ROOTS_CONTAINER,
   analytics: {
-    nftparadise: path(ROOTS_CONTAINER, '/nftparadise')
+    nftparadise: path(ROOTS_CONTAINER, '/nftparadise'),
+    walletprofile: path(ROOTS_CONTAINER, '/walletprofile')
   }
 };
 export const PATH_DASHBOARD = {

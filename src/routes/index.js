@@ -228,7 +228,8 @@ export default function Router() {
       element: <ContainerLayout />,
       children: [
         { path: '/', element: <Navigate to="/container/nftparadise" replace /> },
-        { path: 'nftparadise', element: <DraggableTable /> }
+        { path: 'nftparadise', element: <DraggableTable /> },
+        { path: 'walletprofile', element: <WalletProfile /> }
       ]
     }
   ]);
@@ -325,3 +326,4 @@ const MultiLanguage = Loadable(lazy(() => import('../pages/components-overview/e
 const Animate = Loadable(lazy(() => import('../pages/components-overview/extra/animate')));
 const MegaMenu = Loadable(lazy(() => import('../pages/components-overview/extra/MegaMenu')));
 const DraggableTable = Loadable(lazy(() => import('../layouts/container/DraggableTable')));
+const WalletProfile = Loadable(lazy(() => import('../layouts/container/WalletProfile')));

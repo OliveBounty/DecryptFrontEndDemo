@@ -35,6 +35,11 @@ const ContainerSidebarConfig = [
         title: 'nftParadise',
         path: PATH_CONTAINER.analytics.nftparadise,
         icon: ICONS.analytics
+      },
+      {
+        title: 'walletProfile',
+        path: PATH_CONTAINER.analytics.walletprofile,
+        icon: ICONS.analytics
       }
       // { title: 'e-commerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
       // { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics },
