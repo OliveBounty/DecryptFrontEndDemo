@@ -6,7 +6,7 @@ function path(root, sublink) {
 
 const ROOTS_AUTH = '/auth';
 const ROOTS_DASHBOARD = '/dashboard';
-
+const ROOTS_CONTAINER = '/container';
 // ----------------------------------------------------------------------
 
 export const PATH_AUTH = {
@@ -31,7 +31,12 @@ export const PATH_PAGE = {
   page500: '/500',
   components: '/components'
 };
-
+export const PATH_CONTAINER = {
+  root: ROOTS_CONTAINER,
+  analytics: {
+    nftparadise: path(ROOTS_CONTAINER, '/nftparadise')
+  }
+};
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
   general: {

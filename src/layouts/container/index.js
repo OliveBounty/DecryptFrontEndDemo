@@ -52,8 +52,7 @@ export default function ContainerLayout() {
           })
         }}
       >
-        {/* this is ContainerLayout */}
-        <DraggableTable />
+        <Outlet />
       </MainStyle>
     </RootStyle>
   );

@@ -225,7 +225,8 @@ export default function Router() {
     // Container Routes
     {
       path: 'container',
-      element: <ContainerLayout />
+      element: <ContainerLayout />,
+      children: [{ path: 'nftparadise', element: <DraggableTable /> }]
     }
   ]);
 }
@@ -320,3 +321,4 @@ const Carousel = Loadable(lazy(() => import('../pages/components-overview/extra/
 const MultiLanguage = Loadable(lazy(() => import('../pages/components-overview/extra/MultiLanguage')));
 const Animate = Loadable(lazy(() => import('../pages/components-overview/extra/animate')));
 const MegaMenu = Loadable(lazy(() => import('../pages/components-overview/extra/MegaMenu')));
+const DraggableTable = Loadable(lazy(() => import('../layouts/container/DraggableTable')));
