@@ -13,10 +13,10 @@ import { PATH_DASHBOARD, PATH_DOCS } from '../../routes/paths';
 import Logo from '../../components/Logo';
 import MyAvatar from '../../components/MyAvatar';
 import Scrollbar from '../../components/Scrollbar';
-import NavSection from '../../components/NavSection';
+import ContainerSidebarNavSection from '../../components/ContainerSidebarNavSection';
 import { MHidden } from '../../components/@material-extend';
 //
-import sidebarConfig from './SidebarConfig';
+import ContainerSidebarConfig from './ContainerSidebarConfig';
 import { DocIllustration } from '../../assets';
 
 // ----------------------------------------------------------------------
@@ -156,11 +156,11 @@ export default function ContainerSidebar({ isOpenSidebar, onCloseSidebar }) {
         )} */}
       </Stack>
 
-      <NavSection navConfig={sidebarConfig} isShow={!isCollapse} />
+      <ContainerSidebarNavSection navConfig={ContainerSidebarConfig} isShow={!isCollapse} />
 
       <Box sx={{ flexGrow: 1 }} />
 
-      {!isCollapse && (
+      {/* {!isCollapse && (
         <Stack spacing={3} alignItems="center" sx={{ px: 5, pb: 5, mt: 10, width: 1, textAlign: 'center' }}>
           <DocIllustration sx={{ width: 1 }} />
 
@@ -177,7 +177,7 @@ export default function ContainerSidebar({ isOpenSidebar, onCloseSidebar }) {
             Documentation
           </Button>
         </Stack>
-      )}
+      )} */}
     </Scrollbar>
   );
 
