@@ -73,7 +73,7 @@ export default function SliderComponent() {
   };
 
   return (
-    <RootStyle title="Components: Slider | Minimal-UI">
+    <RootStyle title="Components: Slider | Decrypt">
       <Box
         sx={{
           pt: 6,

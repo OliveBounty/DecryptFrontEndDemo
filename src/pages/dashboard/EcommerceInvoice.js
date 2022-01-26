@@ -76,7 +76,7 @@ export default function EcommerceInvoice() {
   const total = subTotal - INVOICE.discount + INVOICE.taxes;
 
   return (
-    <Page title="Ecommerce: Invoice | Minimal-UI">
+    <Page title="Ecommerce: Invoice | Decrypt">
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
           heading="Invoice Details"

@@ -26,7 +26,7 @@ export default function AvatarComponent() {
   const theme = useTheme();
 
   return (
-    <RootStyle title="Components: Avatar | Minimal-UI">
+    <RootStyle title="Components: Avatar | Decrypt">
       <Box
         sx={{
           pt: 6,

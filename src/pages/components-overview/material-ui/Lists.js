@@ -98,7 +98,7 @@ export default function ListsComponent() {
   };
 
   return (
-    <RootStyle title="Components: Lists | Minimal-UI">
+    <RootStyle title="Components: Lists | Decrypt">
       <Box
         sx={{
           pt: 6,

@@ -25,7 +25,7 @@ export default function GeneralAnalytics() {
   const { themeStretch } = useSettings();
 
   return (
-    <Page title="General: Analytics | Minimal-UI">
+    <Page title="General: Analytics | Decrypt">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">Hi, Welcome back</Typography>

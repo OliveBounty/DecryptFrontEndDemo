@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { styled, useTheme } from '@material-ui/core/styles';
 import {
@@ -11,44 +11,35 @@ import {
   TablePagination,
   TableRow
 } from '@material-ui/core';
-
+import axios from 'axios';
 // hooks
 // ----------------------------------------------------------------------
 // Mokupdata
 // -------------------------------------------------------------------------------------
 const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
+  { id: 'name', label: 'NFT Collection', minWidth: 170 },
+  { id: 'volume', label: 'Volume(ETH)', minWidth: 100 },
   {
-    id: 'population',
-    label: 'Population',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US')
+    id: 'avgprice',
+    label: 'Avg Price(ETH)',
+    minWidth: 170
+    // align: 'right'
   },
   {
-    id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
+    id: 'floor',
+    label: 'Floor(ETH)',
     minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US')
-  },
-  {
-    id: 'density',
-    label: 'Density',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2)
+    align: 'right'
   }
 ];
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
+function createData(name, volume, avgprice, floor) {
+  // const density = population / size;
+  return { name, volume, avgprice, floor };
 }
 
 const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
+  createData('Meebits', '106819', 1324171354, 3287263),
   createData('China', 'CN', 1403500365, 9596961),
   createData('Italy', 'IT', 60483973, 301340),
   createData('United States', 'US', 327167434, 9833520),
@@ -64,11 +55,14 @@ const rows = [
   createData('Nigeria', 'NG', 200962417, 923768),
   createData('Brazil', 'BR', 210147125, 8515767)
 ];
+
 // -------------------------------------------------------------------------------------
 export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
+  const [collectiondata, setCollectiondata] = useState([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [data, setData] = React.useState(rows);
+  const [test, setTest] = useState({});
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -78,6 +72,31 @@ export default function StickyHeadTable() {
     setPage(0);
   };
 
+  useEffect(() => {
+    const options = {
+      method: 'GET',
+      url: 'https://api.opensea.io/api/v1/collections?offset=0&limit=300',
+      headers: { Accept: 'application/json' }
+    };
+
+    axios.get('https://api.opensea.io/api/v1/collections?offset=0&limit=300').then(async (response) => {
+      // console.log("response=>", response);
+      console.log('get opensea api======', response.data.collections);
+      setCollectiondata(response.data.collections);
+      console.log('collectiondata====', collectiondata);
+      setData(
+        response.data.collections.map((collection) => {
+          const result = {
+            name: collection.name,
+            volume: collection.stats.total_volume,
+            avgprice: collection.stats.average_price,
+            floor: collection.stats.floor_price
+          };
+          return result;
+        })
+      );
+    });
+  }, []);
   function onDragEnd(result) {
     if (!result.destination) {
       return;
@@ -116,13 +135,13 @@ export default function StickyHeadTable() {
               {(provided) => (
                 <TableBody className="tablebody" {...provided.droppableProps} ref={provided.innerRef}>
                   {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
-                    <Draggable key={row.code} draggableId={row.code} index={index}>
+                    <Draggable key={row.name} draggableId={row.name} index={index}>
                       {(provided) => (
                         <TableRow
                           hover
                           role="checkbox"
                           tabIndex={-1}
-                          key={row.code}
+                          key={row.name}
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
@@ -148,7 +167,7 @@ export default function StickyHeadTable() {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={collectiondata.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
