@@ -11,7 +11,12 @@ import {
   TablePagination,
   TableRow,
   Stack,
-  Avatar
+  Avatar,
+  Box,
+  InputLabel,
+  MenuItem,
+  FormControl,
+  Select
 } from '@material-ui/core';
 import axios from 'axios';
 // hooks
@@ -57,14 +62,23 @@ const rows = [
   // createData('Nigeria', 'NG', 200962417, 923768),
   // createData('Brazil', 'BR', 210147125, 8515767)
 ];
-
+// eslint-disable-next-line camelcase
+const period_init = [
+  { value: '1 hour' },
+  { value: '2 hours' },
+  { value: '3 hours' },
+  { value: '1 day' },
+  { value: '3 days' }
+];
 // -------------------------------------------------------------------------------------
 export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [collectiondata, setCollectiondata] = useState([]);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [period, setPeriod] = React.useState('1 hour');
   const [data, setData] = React.useState([]);
   const [test, setTest] = useState({});
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -72,6 +86,10 @@ export default function StickyHeadTable() {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const handleChangePeriod = (event) => {
+    setPeriod(event.target.value);
   };
 
   useEffect(() => {
@@ -121,79 +139,97 @@ export default function StickyHeadTable() {
   }
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 800 }}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }}>
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
+    <Stack>
+      <Box sx={{ minWidth: 120, maxWidth: 400 }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Period</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={period}
+            label="Period"
+            onChange={handleChangePeriod}
+          >
+            {period_init.map((temp, index) => (
+              <MenuItem value={temp.value}>{temp.value}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
+      <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+        <TableContainer sx={{ maxHeight: 800 }}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }}>
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
 
-          <DragDropContext onDragEnd={onDragEnd}>
-            <Droppable droppableId="tablebody">
-              {(provided) => (
-                <TableBody className="tablebody" {...provided.droppableProps} ref={provided.innerRef}>
-                  {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
-                    <Draggable key={row.name} draggableId={row.name} index={index}>
-                      {(provided) => (
-                        <TableRow
-                          hover
-                          role="checkbox"
-                          tabIndex={-1}
-                          key={row.name}
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          {columns.map((column) => {
-                            if (column.id === 'name') {
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Droppable droppableId="tablebody">
+                {(provided) => (
+                  <TableBody className="tablebody" {...provided.droppableProps} ref={provided.innerRef}>
+                    {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
+                      <Draggable key={row.name} draggableId={row.name} index={index}>
+                        {(provided) => (
+                          <TableRow
+                            hover
+                            role="checkbox"
+                            tabIndex={-1}
+                            key={row.name}
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            {columns.map((column) => {
+                              if (column.id === 'name') {
+                                return (
+                                  <TableCell key={column.id} align={column.align}>
+                                    <Stack direction="row" spacing={2}>
+                                      <Stack>
+                                        {/* <img rounded src={row.img_url} alt="logo_image" /> */}
+                                        <Avatar rounded src={row.img_url} alt="logo_image" />
+                                      </Stack>
+                                      <Stack direction="column">
+                                        <Stack>{row.name}</Stack>
+                                        <Stack>TotalSupply: {row.total_supply}</Stack>
+                                      </Stack>
+                                    </Stack>
+                                  </TableCell>
+                                );
+                              }
+                              const value = row[column.id];
                               return (
                                 <TableCell key={column.id} align={column.align}>
-                                  <Stack direction="row" spacing={2}>
-                                    <Stack>
-                                      {/* <img rounded src={row.img_url} alt="logo_image" /> */}
-                                      <Avatar rounded src={row.img_url} alt="logo_image" />
-                                    </Stack>
-                                    <Stack direction="column">
-                                      <Stack>{row.name}</Stack>
-                                      <Stack>TotalSupply: {row.total_supply}</Stack>
-                                    </Stack>
-                                  </Stack>
+                                  {column.format && typeof value === 'number' ? column.format(value) : value}
                                 </TableCell>
                               );
-                            }
-                            const value = row[column.id];
-                            return (
-                              <TableCell key={column.id} align={column.align}>
-                                {column.format && typeof value === 'number' ? column.format(value) : value}
-                              </TableCell>
-                            );
-                          })}
-                        </TableRow>
-                      )}
-                    </Draggable>
-                  ))}
-                </TableBody>
-              )}
-            </Droppable>
-          </DragDropContext>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={collectiondata.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </Paper>
+                            })}
+                          </TableRow>
+                        )}
+                      </Draggable>
+                    ))}
+                  </TableBody>
+                )}
+              </Droppable>
+            </DragDropContext>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={collectiondata.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Paper>
+    </Stack>
   );
 }
 // -----------------------------------------------------------------------------------
