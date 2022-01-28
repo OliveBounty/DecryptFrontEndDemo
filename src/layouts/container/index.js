@@ -7,6 +7,8 @@ import useCollapseDrawer from '../../hooks/useCollapseDrawer';
 import ContainerNavbar from './ContainerNavbar';
 import ContainerSidebar from './ContainerSidebar';
 import DraggableTable from './DraggableTable';
+import AccountPopover from './AccountPopover';
+
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -39,7 +41,7 @@ export default function ContainerLayout() {
   const [open, setOpen] = useState(false);
 
   return (
-    <RootStyle>
+    <RootStyle title="NFT paradise">
       <ContainerNavbar onOpenSidebar={() => setOpen(true)} />
       <ContainerSidebar isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} />
       <MainStyle
