@@ -122,7 +122,7 @@ export default function StickyHeadTable() {
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 600 }}>
+      <TableContainer sx={{ maxHeight: 800 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -161,7 +161,7 @@ export default function StickyHeadTable() {
                                     </Stack>
                                     <Stack direction="column">
                                       <Stack>{row.name}</Stack>
-                                      <Stack>{row.total_supply}</Stack>
+                                      <Stack>TotalSupply: {row.total_supply}</Stack>
                                     </Stack>
                                   </Stack>
                                 </TableCell>
