@@ -68,7 +68,8 @@ const period_init = [
   { value: '2 hours' },
   { value: '3 hours' },
   { value: '1 day' },
-  { value: '3 days' }
+  { value: '7 days' },
+  { value: '1 month' }
 ];
 // -------------------------------------------------------------------------------------
 export default function StickyHeadTable() {
